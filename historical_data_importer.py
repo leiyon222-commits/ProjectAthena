@@ -12,8 +12,8 @@ TIMEFRAME_NAME = "M5"
 
 DATABASE_PATH = Path("data/athena.db")
 
-# 直近1年分を取得
-HISTORY_DAYS = 365
+# 直近5年分を取得
+HISTORY_DAYS = 1825
 
 
 def initialize_database(connection: sqlite3.Connection) -> None:

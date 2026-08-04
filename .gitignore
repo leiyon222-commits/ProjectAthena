@@ -1,6 +1,4 @@
 # Python
-__pycache__/
-*.py[cod]
 .venv/
 venv/
 
@@ -19,3 +17,13 @@ logs/
 
 # Windows
 Thumbs.db
+
+# Generated data and AI artifacts
+data/
+*.db
+*.csv
+*.joblib
+
+# Python cache
+__pycache__/
+*.pyc
