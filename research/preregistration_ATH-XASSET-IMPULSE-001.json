@@ -1,0 +1,17 @@
+{
+  "experiment_id": "ATH-XASSET-IMPULSE-001",
+  "hypothesis": "At completed H1 boundaries, a first zero-crossing of broad USD-strength plus JPY-weakness pressure with at least 75% cross-pair directional agreement continues over the next four hours.",
+  "family": "cross_asset_pressure_events",
+  "script_path": "athena_cross_asset_impulse_walkforward_v1.py",
+  "dataset": "data/market_context_expected_r_enriched.csv",
+  "timeframes": ["M5 execution labels", "H1 cross-asset return horizon"],
+  "entry_rules": "At minute 00 only: BUY when strength_usdjpy_pressure_1h crosses from <=0 to >0 and strength_all_agreement_1h>=0.75; SELL when pressure crosses from >=0 to <0 and agreement<=0.25. One position at a time.",
+  "exit_rules": "Existing expected-R labels: SL 2 ATR, TP 3 ATR, maximum 48 M5 bars, actual-R time exit.",
+  "fixed_parameters": {"primary_agreement": 0.75, "pressure_cross": 0.0, "folds": 4, "label_gap_m5": 48},
+  "cost_assumptions": "Existing label spread plus an additional conservative 0.05R per trade; no zero-cost substitution.",
+  "fold_definition": "The same four fixed chronological test folds used by prior protocol-period experiments; validation windows are skipped and never used for selection; 48 M5 rows removed at each test end.",
+  "minimum_trades": 200,
+  "acceptance_criteria": "All existing protocol gates: >=200 trades, >=3/4 positive folds, cost-adjusted PF>=1.20, mean-R 95% lower bound>0, max DD<=15R, no excessive fold/month/direction concentration, preregistered neighbors 2/3 and 5/6 show the same positive tendency, leakage audit passes.",
+  "rejection_criteria": "Reject if any acceptance gate fails. Neighbor results cannot replace the 0.75 primary.",
+  "stopping_criteria": "Stop this experiment after the fixed primary and preregistered robustness-only neighbors are evaluated; do not tune from results."
+}

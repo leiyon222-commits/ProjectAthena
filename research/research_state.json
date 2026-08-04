@@ -1,0 +1,47 @@
+{
+  "state": "STOP_NO_EDGE",
+  "updated_at": "2026-08-04T13:55:24.0164489+09:00",
+  "historical_imported_experiments_count": 7,
+  "protocol_new_experiments_count": 24,
+  "protocol_new_experiments_limit": 24,
+  "remaining_new_experiments": 0,
+  "stop_no_edge": true,
+  "audit_status": "AUDIT_FAIL_CORRECTED",
+  "active_experiment_id": null,
+  "next_action": "Stop historical research because the active protocol's 24-new-experiment limit has been reached without a candidate.",
+  "python": "E:\\ProjectAthena\\.python-runtime\\python.exe",
+  "data_cutoff": "2026-08-04",
+  "state_history": [
+    {
+      "state": "STOP_NO_EDGE",
+      "status": "RETRACTED_BY_AUDIT",
+      "reason": "The prior count incorrectly included seven imported pre-protocol experiments in the 24-new-experiment limit."
+    },
+    {
+      "state": "HISTORICAL_RESEARCH",
+      "status": "AUDIT_CORRECTION_CONFIRMED",
+      "at": "2026-08-04T13:20:39.3901135+09:00",
+      "reason": "Corrected to 17 protocol-period experiments and seven remaining slots."
+    },
+    {
+      "state": "STOP_NO_EDGE",
+      "status": "RETRACTED_BY_AUDIT",
+      "at": "2026-08-04T13:25:29.6556398+09:00",
+      "reason": "EARLY_STOP_CONDITION_NOT_DEFINED_IN_PROTOCOL",
+      "original_reason": "After one hash-verified, structurally distinct cross-asset experiment failed in all folds, structural comparison found no rationally distinct hypothesis remaining. Six slots remained unused."
+    },
+    {
+      "state": "HISTORICAL_RESEARCH",
+      "status": "AUDIT_CORRECTION_IN_PROGRESS",
+      "at": "2026-08-04T13:46:00.6566918+09:00",
+      "reason": "The second invalid STOP_NO_EDGE was retracted because early exhaustion was not a defined condition in the active protocol."
+    },
+    {
+      "state": "STOP_NO_EDGE",
+      "status": "VALID",
+      "at": "2026-08-04T13:55:24.0164489+09:00",
+      "reason": "PROTOCOL_NEW_EXPERIMENT_LIMIT_REACHED_24_WITHOUT_CANDIDATE"
+    }
+  ],
+  "notes": "Both invalid STOP_NO_EDGE transitions remain preserved as retracted audit history. The current stop is valid solely because the active 24-new-experiment limit was reached."
+}

@@ -1,0 +1,13 @@
+# ProjectAthena Research Protocol
+
+Data through 2026-08-04 is historical research data and is not a final untouched holdout. The limit of 24 new experiments applies only to experiments performed after this protocol began. Imported pre-protocol experiments are documented for multiple-comparison context but never count toward that limit.
+
+The loop is hypothesis, preregistration, implementation, syntax check, backtest/walk-forward, leakage audit, statistical evaluation, decision, and only then a structurally distinct hypothesis. A family is limited to five protocol-period experiments and historical research to 24 protocol-period new experiments. Failed results remain recorded.
+
+For every future experiment, `research/preregistrations.jsonl` is the authoritative preregistration ledger and `research/results.jsonl` is the separate result ledger. Before execution, the experiment conditions and script must be finalized. A canonical JSON payload excluding `preregistration_sha256` is serialized with sorted keys and compact separators; its SHA-256 becomes `preregistration_sha256`. The finalized script file SHA-256 becomes `script_sha256`. The actual current timestamp is recorded, the complete preregistration record is appended and closed, and only then may execution begin. At execution, the script hash must be recomputed and match exactly; mismatch invalidates the experiment and stops work. Results are appended separately after completion and reference both hashes. Historical timestamps are never inferred or backfilled.
+
+All tests use chronological folds, a label-horizon gap, confirmed higher-timeframe bars, non-overlapping trades, BUY/SELL, year/month/fold breakdowns, mean R and its 95% lower bound, PF, drawdown, losing streak, concentration, missing-data, cost and leakage checks. Test periods are never used for selection. A primary parameter is fixed in advance; preregistered neighbors are robustness checks only and cannot replace it.
+
+Unavailable execution costs must not default optimistically to zero. Unless a strategy-specific preregistration is more conservative, deduct 0.05R per completed trade in addition to spread already embedded in the expected-R labels. Swap is avoided by the 48-M5-bar maximum holding period; residual swap is noted as an unresolved limitation.
+
+Historical acceptance requires all criteria in `AGENTS.md`. A candidate is frozen and hashed before shadow operation. Shadow operation never sends orders, lasts at least 12 weeks and 50 closed trades, and must meet cost-adjusted profitability and reliability criteria. `PRE_LIVE_READY` is a hard stop before any live-order implementation.
